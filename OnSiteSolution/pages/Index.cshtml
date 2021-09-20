@@ -1,0 +1,373 @@
+﻿@page
+@model OnSiteSolution.pages.IndexModel
+@{
+}
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>OnSite Solution </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="background-color:rgb(117 112 112);">
+
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-sucess" style="background-color:black">
+            <a class="navbar-brand" href="#">Customer Site HelpLine</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <button class="btn btn-primary rounded" data-toggle="modal" data-target="#addMessage">Send Query</button>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <br /><br /><br />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="https://mk0tothewebprod1couj.kinstacdn.com/wp-content/uploads/2020/08/Internal-On-Site-Search-Banner-2-862x449.jpg" style="height:350px;width:100%;border-radius:5px;" />
+
+                </div>
+            </div>
+
+        </div>
+        <br />
+        <br />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" id="messages">
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <br />
+        <br />
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://pbs.twimg.com/media/D2HCowAXQAA1DdV.jpg" style="height:300px;width:350px;" />
+
+                </div>
+                <div class="col-md-4">
+
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEBUQEhIVFRUQFRUREBUWFhUQFRUVFxUWFhURFRUYHSggGBolHRYVITEhJSkrLy4uFx8zODMsNygtLisBCgoKDg0OGhAQGi8lHyUtLS0tLS0tLS0tLS0rKzAtLS0tLS0tLS0tLS0tLS4tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAJUBUwMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABAUCAwYBB//EAEUQAAEDAQUECAIGBgkFAAAAAAEAAgMRBAUSITEGQVFxEyJhgZGhscEyUhQjM0Ji0UNTcoKSwgcVFiWTsuHw8SQ0RFSj/8QAGgEBAAIDAQAAAAAAAAAAAAAAAAEEAgMFBv/EADMRAAIBAgMECQMFAQEBAAAAAAABAgMRBCExBRJBsRNRYXGBkaHB8DLR4RUiM0LxIxQG/9oADAMBAAIRAxEAPwD7iiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAixLgNStLrXGNXtH7wRK+hDaWpIRQH3rAP0g7s/RaX37APvE8mn3WxUqj0i/I1PEUlrJeaLVFUw35C40qW8CRl5HJWbHgioIIOhGYWMoSh9SsZU6sKmcGmZoiLE2BERAEREAREQBERAEREAREQBERAEReFCbM9RR32qNvxPaObgPdY/T4v1sf8TfzUqLeiMN6K1ZKRYtIOYWSgyCLm7ZtQ1kj4xGXGNxaesGio7ior9rX7oQObi72CsxwdaSuo+q+5SntDDxdnL0b9jrkXFP2omOjWjuJ9VnDtTKD12tcN9KsPis3gK1tF5/EYfqmH635M7JFAuy8WTNxMOY+Jp1B7fzU9VJRcXZl6E1NKUXdMIoVptVKtbQuAq7PJo+Z3DRVknSylvWLGEgYycBfXg30CrVcQoZJXfUvmXbw8cjfTouWbdl8+W1fdmdAihyuETQSXHDkBWpcTz1KgWm8hQOY41J0IypvBFVFXFQpL97z1tx/PuRClKf0l2qXaC+/ouDq4ukxb6UpTPt1Uu77wbLlo4at9xxC4/wDpGm+tiZwYXfxOp/KruBdOvOLWcXfkUtoSnQpStlLL1ZZf2nkcKtDKHmfdanX9OfvU5NHuuQsUxByO5TDaHcV21haS0ijzzx1d6zfn9jpIr9nBqXB3YQB6UV5YL5jkyPUdwOh7187MruJ8VhjPE+KwqYKnNaW7vtobKW0atN63XU/vqTr9vA/TJiDkHEU1HVAb6gr2C3NOuXoolnut9oeWxkY6E0OQfSlRXcc1FkaYSWSgscNWuyPMcR2rdHdSVO+aSK09+TdW2Tb7eOhcm2s4+S1m3t4FU4tjCaA1J4Ares1FMwcpInG8ODfNWOztukdaGMaaBxq8DeACcx3LyxbLSyMbJia0PAIriJodKinury4tmzZ5eldKHnCWgBhbQmmdS410O7eqdfEUdyUU7vPz5F/DYTEOpCTTSune60167+h0SLJFxj0YRFUXpfLYjgaMT943N5/ksoQlN2ijXUqwpx3puyLaqwdK0auA5kBcZabxlk+J5pw0HgFDICuxwDf1S8kc6e1F/WPm7cr8zvenb87f4gtoXzsgIyQtNWkt5E+yz/T+qXoYLa1tYeT/AAfRVVWm+4mOLCSS00NB7lZ3Fauls8chNSQQTxLSWnzBXK35KBaZATv9gVXw9BVJuMuH3LOMxUqVKM4cba9quXz9pY9zHnnQe6trDaOkjbJSmIVprTsXzs2hq7PZafHZh+Fzm+dfdbsXhoU4b0Vx9mV8Bjalaq4zfC/qvuXK5G8L7mbK9jXABhLR1QTQHLVdcvnu0Ti21yjiWkd7G+4KwwMIzqNSV8jdtOpOFJSg2s7Zdz9zbJfFoP6V3cGj0XYXTaulhY/eRR37QyK+d9MV2GxklYHA7pCPFrT7qzjqMY000rWfMpbMxE5VnGUm7ri29Ct2ntb22now5wBYHgAmmpByHIKmc4nXPnUqdt5la4D80bh4O/1VQXHirGES6KL7CptBtYiS7fZG7CsXALUit5lDInWC8JYHYo3ZfeYTUOHCm7mF3thtbZo2yM0cO8HQtPaCvmSvtk7yMcvRE9SQ0HY7ce/TwVDG4ZTjvx1XqjqbNxbpzVOT/a9Ox/Z6WKa95qW6cfjNViZexRr9f/eMw/GfQLarVF3gu5ciliFarLvfNmfSledKVIsFjEmMulbE2JuNznDFvpQCozVFBelZMBbkTQEZcqhZdJG7XUYulLdUuDv6F7Y7e+J4ew0I8COBG8Lr33+HWYysH1hPRtbrSQjLupU8guGW6xzFppxP+yqO0qKlRc1k1x8be50dkV3HERpvOMr5dqTftZ9h22ztnLWuLzidIauJoa5DLxqrmQ0GQqdw0VPc0mQU29ZS2Fzg4NOVD210HauArUqbtol819z1E96pUu9X84FbaraxxZixYmE1pSmR11pnTuqq2R9STSnADcFMs0kLjQmr3VJe4Bra8KHQdy3vgEePBIwfMHEE0AqGgHfmfJcSpSqV/wB11u8bWb0yveybslfOyz6kX4uNP9tnfhfTXhbhn/hVYnsIkGRGbT4+WRC57be2iW0gjQRsy4HrOI81eyyucwDDUNJzA0xZ4ewZV8Vx9/tpKD83rp7FdD/52pu4hwWjjfxy/K8Cht6i5YTf4qS8n+bHt3mtVLcaCvBQ7s+EntUuRtQRxyXuU8jwstSidPIT8bvFXVnrgGLWma1w2JjeJ55BTLPA6R4Yxpc52gGX/AWKyV2S3vOyRf7DwVtDn7o2073Gg8gVzu2k2O3TcGlrR+60V86r6RcV2CzxYa1ces88TwHYF8pvCXpJXyfO5zvFxIVCjNVa8prRJJfO3U6mIpuhhYU3q3d/Oy6RosEfXrwCtA0nIanIczoodhbqe5XdwQ47VE38QceTc/ZXnLci5dWZzFHfmo9dl55H0izwhjGsGjWho7hRbl4F6vNnsu4IiICHedp6OF794HV5mgHmQuAmtdO0nMnt3krottrWWsZGPvkk8hkPXyXHLs4CklT3nx9jzu1K7dbcXBerz5WNr7S471hjPE+Kj2qbA0upXgFWNvVxOdOQCvXSOYk5Zl3iPE+KzEruPuqpt6N+WnIj3C2RXgDqPD8lCkmS4NcefukfQNgZa2TCf0ckjfE4/wCdVG2EdLST87Wu9W/yq42GA+jOIPxyOdqODRmN2m9Q9uY+vE/i14PcWkepXLovdxkkuN+V/Y7mJjvbPi+pRft7nMLsth3/AFUjeD8XiAP5Vxq6bYWTryt4ta7wJHurmOV6D7Lczn7Nlu4mPbdejfsdkuC2yZS1V+aJp7wXA+gXeVXFbdM+uhd8zJG+BaR6lczAu1dePI7O01fDS8OZz663Yd3Vkb+JrvEEfyrkV0mxEtHyji1h8CR7rp41Xoy8OaOLs2VsTHtvyZG/pJFJrI7j0rT/APMj3VKr3+kgVZZ3fLKR/EP9FQqMA/8Ail38zLaitiG+u3KxJu+0wRyB9o+zGIUzPWNMOQ71U7T34yV7RZo+hYytCOq55O91N3Zms7wgL2YRrUdiiQXRvce4LbKlepv8e/2NEMQ40ujytfx8yygeS0E6kAlSLGfrGU1xNp4haQFabPWQyTB1OrGcbjy+FvOufcs6slCDb6jChBzqxiusoNoMr1m/b9gpajbRs/vOV34/YKSscP8AQu5cjPF/yy73zZV3y74RzWm7rG4uDyKAZ148FcFoO5elbN27uaN+yseLKRpZ0UrsmSvdGDwcACO49YfuqbYLsdIQTVrN50r2NHvorO+7E2azGzijaAGLg1zfhPseZXM2jXTpunDN/bh4s7WyMK41VWqqy4deeV7dST8eBNsFujiYHSPa0ZCriGip0FSo+0VtLpcGLqta0gbqnOvauJwOtn/ST1YYauLgBixfCNctCc+S7ay2GIxRxOxHoWhjXV61AKUJ3rz2IpvEUbQdtNcvBnqKM1h615q67M/FcivEidNQ1GozCl3zYWRxY48XVIxVNRT5vGi58WmppXXIczkO5cCrhJ0p7stTs0q1OrHejodRdkYdN0jX0Y2j8INDX5COANedFxm2M4da3AUyNMuLusV1tnc2FmEGpOb3cSPYaUXziSQvcXk1LjiJ7TmvX7JwvRrelrq+9+yXVkr8TyO2sXvLci8nyjn6u3aW93Dqc1lbLU2NuJ1aVplqljbRjeS2Tta6N7HCuIUHYagh3cQvQTnuQ3jzFOHSVVHrZ5Z5g9ocNCrbZ+8uglqfheML+wbndxXHXTaXRvMbxSvhXiDwV8oW7Wg09GS9+hUusmj6HeV44IXurpG4jnhNPOi+UhdXYphLEYJM6Cg3VHDmFS3hc0sWbQXs7BVw5ga8wqdC1CUoS19Do4rexMI1KeatpxT4/OOqyNdlHV5rqdhoK2hz9zGnxJAHkHKhs1hlcAGxuP7rh50XX7J2GSJri9uEvI1IJoB2cytuKqxVJpNXfaV8DQm68ZOLss72duz1OqRa2OWYK4rPSJ3PURFBJyW3VnNIpdzS5ruytCPQrkyvqFtsrZY3RvFWvFD7EcCDQr5re1m+jzOic4HDSjtK1FRXgady6+ArJw6N6rkef2rh3GfSrR8/8XoaHsBFCKhRDd7O1TAa6LwLonJuQn3YNzqdyiSXc9unW5ZHwV0ijdRO+yLs1fD7LaGuJOBxDJW8WnfTiNf+V322sdYGuH3X+oK4K2QBzTxAqPyXdX07HYzxDWu8KE+VVQxEVCtTn22fzxOphJOph6tPsuvnekccrbZe1CO0tBP2lWd5zHpTvVStNpBw5aihHMGuSu1IKcHF8Tm0anR1IzXBn1J0y5Lbi0gvgZvq89xAA9D4KkZtBaMNOkPOjSfGir3ufJIHuJJrUk5lUaGClTmpSay6r/Y6mK2jCpTcIxefXb8k1XGy8uGc9rD5OaqZT7mdSWvAO9QrWK/hl3FHBNrEQ7yZt6+tmYfllYfJwVKNFP2vlxWVw4OYfBwVdGeqOS04B/8ANrtLO1f5U+z3Mltjsz3aCvisrA+krSr0z9qyxOKdKSikYYPBRrxcnK1nb0T9yvs1zuObzhHif9FfWbDG0MYKAeZ4k7yq8zrEzrm1a06v1Pw4HYoYalQ+hZ9fE5m/s7Y88XN/yrasL3jP0jEfvUcOWhCyXXw7Tpxt1L0OBi4uNaSfW35u5ZXXZmPDsQOVKZ0VnFBG3MMFeJ6x8SqW75qEjiB7qxEhK5uLlLpZJvL8I7OAjDoYySV887K+r4k9060PzWtrSVsc2gVRl9M5sxj6RNJ94ODQfw9EzLxUuK9MOq0Y2ttEjHkDpcD465A0aGOaDx6oNO1WAsLSte6jYpPQiXnePSROY12ZpTOlaHQqDYLNQVdm46U0byPHtV227BwUqK7gtTowlPfazN0cROMNyLy9SvijcRQKsvLZ95JfEMzm5ule0cD6rsIbIApcVmVqE3B3iU6lKNRWkcZZLqncKdE9tBq4s/MnyVtYNnHE/WEdgFfWgXUMgW5sK31MVUmrPTuK1LA0qct5Xv3/ABHO2rZWF7aEex5g7isINl4QACZHU4vI/wAtF1HRL0QrSqko6MsSowlrFPvRS2e5oWEFrG1GhJxEd5U9sPYpoiWQjWLk3qZqKWhFbEt7GLaGLINWNzKxiAtgXgasgFi2ZJHqIigyPF8o2gc6SV0lD1i4jlXLyAX1ZzqL5ne8fR2iVo0xEjkcx6rpbOtvSXZ7nH2xfcg+F/b/AE57MbkMzt1fEq1NDq0Hy9E6Jny+ZXVscK5VMtUlRTPsOatgV40AaAD/AHxXqlIhsxfoV1TpwW4DoW4TypQrj+nxOAbmAa14nsVnEXkLl42opSUU9Dt7NpShCUpL6reXxkV7MJLTq3LmNzu9FnabNIcxqNPyWjDKNYyf2PyKs0sZCS/fkylX2fUjJ9Grr1MwxvDzXopuFFqa6U6Webv6MDzkW9lhtTtI2MHF7y4/wtHutjxNJf2NMcHXl/R+hgXUFTos7HOcyBrl3DRTILgcc5HYjwGQHIKyhuxo3KjicV0i3Y6HUweBdJ78nnyOfvWN0kTm9lRzGYUaG0NDGlzmjIakD1XYixDgtTblhBqImAnU4RVa6GJ6K+V7m7FYPp7O9rdhysdsY40Y8OO7AS/fxbVdBDA6mas47GBoFubCsK1d1Wm0bMNhVQi0ne5XMsZ4rc2yBT2xrMRrRctbpVWi6mPFDuzBGRHJRjs3GdS93N7qeAIC6AMXoYpU5JWTMXSi3dpeSKqx3THH8LAO73Un6MOCm4FkI1jczsiEIV70Cm9EsxGoJKa2XRHKMMjGuHAgFVp2TjH2UksX7EjqfwmoXV4FhM9rQXOIAGpJAA7yoJOW/qm2R/Z2kPpuljBr+80hbrBecglEFoiwOfXo3tOON9BUgGlWmm4rfLtA15LLLG6d2mJvViHOQ5eFVnd1xyulE9pcC9v2bGVDI660rm49pQkt441JjjWyOGi3CNCDW1qzAWYasg1Lk2MQF6GrOiUUXJseBq9ovUUCx5ReoiEhERAEREBGtJK4+/rtc95kbrQAila031qu3LVGls4K20qjg7xZXrUY1VuzV0fMpLNMP0TjyP5rDoJzpZ3d72N9Kr6M+xjgtZsg4K1/7avX6FL9NodXq/ucCy7LW7dEz9oulPlhU2DZxx+1eXdlMLfD812H0ZeizrXPEVJ5ORup4SjB3jFc+dyhs90MboFLbYwNythZ1kIFpuWN0qxZexZCyDgrQQLMQJcbpWNso4LMWdWIhTokuTYgdCshCpvRL3olFybELokESm9GnRoLELolkI1NEa96NQSQujXoiUvo1kI0BE6JeiNSxGvejQEURrNsakBig3vecdnjMkhoB4k7mgbyhNiRhVbel8wWf7SQAnRvxOPYGjMqpidbbYagmywnhQzuHM5R+qurs2bs8PWayrzrI8mR55udmouTYpxeNstGVng6Jh/Sz1rzbEM/GikQbJNcQ+1SPtDtaPyjH7MYy8arp2sAWVFFyUiLDZGtADQABkABQBbxGtiKBYxDV7ReohIREQBERAEREAREQBERAEREAXhXqIDAsWJjW1FNyLGjo06Nb0U7xG6aejXuBbUUXJsasC9wLYiXFkYYEwLNEuLGGBMCzRLixrwJgWxEuLGGBe4VkiXFjHCvaL1FBNjyi9REB5RcrtZY5McM7Y+lbA4ufGNSCB1m11IourXhCA5+7dp7I7q9IGO3tkBicOwhyuY7XG7MPaeTgVotd0wS/aRMdzaD6qufsdYj+gaP2at9EBe9IOIWJnaNXN8QqL+xdj/Vu/jf+aDYuxfqa83OPqUBcut0Q1lYOb2j3WH9aQfr4v8AEZ+arWbH2Ef+NGebQfVbP7K2H/1Yf8Nv5ICyitcbvhkY7k4H0KkLnJ9jbGc2wMaeLRgPi1ao7png/wC3tDxT9HKTNGezM4mcwe5AdQiorLtC0Ho7S3oJAK9Y1jeBqYpNHcsj2L1u0kb8Yha6QsFaZsxD8NRmgLxFSi/g2nTxSRA6ONHs5FzdFawzNe0Oa4OB0INR4oDaiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCi2sUzUpRLfHVpQHC3q4yzuxTMBBpFG6rRhGVcWlTqo8TpIX5FzHD09CPJatp7vcHGT/fbXuUS6b6Ab0coxxHTPrs7WO3ctEB291X6yX6uYAF2VfuO7CDofJe2i6ZIHGWyEje+I5tPIH08DuXM2izgAPa4Pjf8AA8f5XD7ruxXNxX9gpHMatHwu1Lew8R6IC8ua+WTjD8MjfiYfMt4j0VsuK2htMBe2WF/1oNXFuQ7HE8Vd7P3wJ24XUEjRnuxD5h7oC6REQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAWJCIgKy87GxwNQvl+0l3thdjYaVObd2e/sREBsuC3Oa4MPWZKWskYdCCaA9hG4q0tEWCR8dahhoD3A+6IgNDytty2pzbVDTfI1p5OOEjwKIgPp6IiAIiIAiIgP/Z" style="height:300px;width:350px;" />
+
+
+                </div>
+
+                <div class="col-md-4">
+                    <img src="https://assets.dice.com/techpro/companies/brandMax/Experis/banner.png" style="height:300px;width:350px;" />
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+var uri = 'api/Messages';
+
+
+        $(document).ready(function () {
+            // Gets all Messages records
+            $.getJSON(uri)
+                .done(function (data) {
+
+                    $("#messageTemplate").tmpl(data).appendTo("#messages");
+                    $('.toast').toast('show');
+                });
+
+
+            $('.toast').toast('show');
+
+        });
+
+        // print all messages
+
+        function getAllMessages() {
+
+            $.getJSON(uri)
+                .done(function (data) {
+
+                    $("#messages").text("");
+
+                    $("#messageTemplate").tmpl(data).appendTo("#messages");
+                    $('.toast').toast('show');
+                });
+
+        }
+
+        // add message function
+
+        function addMessage() {
+            var _text = $('#text').val();
+            var _sender = $('#sender').val();
+            var _time = $('#time').val();
+
+
+
+
+            var message = {
+                text: _text,
+                sender: _sender,
+                time: _time
+
+
+            };
+
+            $.ajax({
+                type: "POST",
+                url: uri,
+                data: JSON.stringify(message),
+                contentType: "application/json; charset=utf-8"
+            }).done(function (response) {
+                $("#result").html("Message has been sent");
+                getAllMessages();
+            }).fail(function (jqXHR, textStatus) {
+                $("#result").html("Send failed!");
+            });
+
+
+
+
+        }
+
+
+
+        // update content message function
+
+        function updateMessage() {
+            var _text = $('#_text').val();
+            var _sender = $('#_sender').val();
+            var _time = $('#_time').val();
+
+
+
+
+
+            var message = {
+                id: parseInt($('#_id').val()),
+                text: _text,
+                sender: _sender,
+                time: _time
+
+
+            };
+
+            $.ajax({
+                type: "PUT",
+                url: uri + "/" + $('#_id').val(),
+                data: JSON.stringify(message),
+                contentType: "application/json; charset=utf-8"
+            }).done(function (response) {
+                $("#resultUpdate").html("Message Updated");
+                getAllMessages();
+            }).fail(function (jqXHR, textStatus) {
+                $("#resultUpdate").html("Updates failed!");
+            });;
+
+
+
+
+        }
+
+        // delete a message
+
+        function remove(id) {
+
+
+            var yes = confirm("Delete this Message?");
+
+            if (yes) {
+                $.ajax({
+                    type: "DELETE",
+                    url: uri + "/" + id,
+
+                }).done(function (response) {
+
+                    getAllMessages();
+                });
+
+            }
+
+
+        }
+
+
+
+
+
+        function getMessageForUpdate(id) {
+
+            $.ajax({
+                type: "GET",
+                url: uri + "/" + id,
+                contentType: "application/json"
+            }).done(function (response) {
+
+                $('#_id').val(response.id);
+                $('#_time').val(response.time);
+                $('#_sender').val(response.sender);
+                $('#_text').val(response.text);
+
+
+
+
+
+            });
+
+
+        }</script>
+
+
+
+    <script id="messageTemplate" type="text/x-jquery-tmpl">
+
+
+        <div class="toast" data-autohide="false" style="width:in;">
+
+
+            <div class="toast-header">
+
+                <strong class="mr-auto">${sender}</strong>
+                <small>${time}</small>
+                <br />
+                <button class="btn btn-outline-primary" onclick="getMessageForUpdate('${id}')" data-toggle="modal" data-target="#updateMessage">Update</button>
+                <a href="#" class="btn btn-outline-danger" onclick="remove('${id}')">Delete</a>
+            </div>
+            <div class="toast-body">
+                ${text}
+            </div>
+        </div>
+
+    </script>
+
+
+
+    <div class="modal" tabindex="-1" role="dialog" id="addMessage">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Register Complaint</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Type </label>
+                            <input type="text" class="form-control" id="text" aria-describedby="emailHelp" placeholder="Text">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Complaint Detail</label>
+                            <input type="text" class="form-control" id="sender" aria-describedby="emailHelp" placeholder="Sender">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Time</label>
+                            <input type="datetime-local" class="form-control" id="time" aria-describedby="emailHelp" placeholder="Time">
+
+                        </div>
+
+
+                        <div class="form-group" id="result">
+
+
+                        </div>
+                        <button type="button" onclick="addMessage()" class="btn btn-primary">Register Complaint</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Discard</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="modal" tabindex="-1" role="dialog" id="updateMessage">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Complaint</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+
+                        <div class="form-group">
+
+                            <input type="hidden" class="form-control" id="_id" aria-describedby="emailHelp">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Complaint Details</label>
+                            <input type="text" class="form-control" id="_text" aria-describedby="emailHelp" placeholder="Text">
+
+                        </div>
+                        <div class="form-group">
+
+                            <input type="hidden" class="form-control" id="_sender" aria-describedby="emailHelp" placeholder="Sender">
+
+                        </div>
+                        <div class="form-group">
+
+                            <input type="hidden" class="form-control" id="_time" aria-describedby="emailHelp" placeholder="Time">
+
+                        </div>
+
+
+                        <div class="form-group" id="resultUpdate">
+
+
+                        </div>
+                        <button type="button" onclick="updateMessage()" class="btn btn-primary">Update Complaint</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Discard</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
